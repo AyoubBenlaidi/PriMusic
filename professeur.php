@@ -8,7 +8,7 @@
 		<label>Instrument : </label>
 		<select name="instr_id" id="instr_id">
 			<?php
-				for($i = 0, $size = count($instrArray); $i < $size; $i++) {
+				for($i = 1, $size = count($instrArray)+1; $i < $size; $i++) {
 			?>
 					<option value="<?php echo $instrArray[$i][0]; ?>"><?php echo $instrArray[$i][1]; ?></option>
 			<?php
@@ -24,7 +24,7 @@
 		<label>Nom : </label>
 		<select name="prof_id" id="prof_id">
 		<?php
-				for($i = 0, $size = count($profArray); $i < $size; $i++) {
+				for($i = 1, $size = count($profArray)+1; $i < $size; $i++) {
 		?>
 					<option value="<?php echo $profArray[$i][0] ?>"><?php echo $profArray[$i][1], ' ', $profArray[$i][2] ?></option>
 			<?php

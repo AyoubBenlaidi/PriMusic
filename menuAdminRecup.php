@@ -2,7 +2,8 @@
 include("Query.php");
 	$profArray = databaseQuery("SELECT prof_id,prof_nom,prof_prenom FROM professeur");
 	$instrArray = databaseQuery("SELECT instr_id, instr_nom FROM instrument");
-	$atelierArray = databaseQuery("SELECT atl_id, atl_nom FROM atelier");
+   
+    $atelierArray = databaseQuery("SELECT atl_id, atl_nom FROM atelier");
 	$formuleArray = databaseQuery("SELECT fml_id, fml_nom, fml_num FROM formule");
 	$communeArray = databaseQuery("SELECT cmn_id,cmn_nom FROM commune");
 	$formationArray = databaseQuery("SELECT * FROM formation");

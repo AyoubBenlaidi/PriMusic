@@ -1,44 +1,10 @@
 <?php session_start(); ?>
 <?php include('menuAdminRecup.php'); ?>
-<!-- Récupération de données pour la barre --> 
+
 <!--
-<style>
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-		background-color: #333;
-	}
-
-	li {
-		float: left;
-		color: white;
-	}
-
-	li a {
-		display: block;
-		color: white;
-		text-align: center;
-		padding: 14px 16px;
-		text-decoration: none;
-	}
-
-	li a:hover:not(.active) {
-		background-color: #111;
-	}
-
-	.active {
-		background-color: #4CAF50;
-	}
-	.floatright {
-    float:right;
-}
-</style>
-
 <ul>
-    <li><a  <?php echo $activeAdmin ?> href="/administration.php">Administration</a></li>
-	<li><a href="/login/logout.php">Se déconnecter</a></li>
+   
+	
 	<div class="floatright">
                 <li><?php include("countFamille.php"); ?> familles inscrites pour l'année en cours</li><br/>
 				<li><?php include("countAdherent.php"); ?> adhérents inscrits pour l'année en cours</li>
@@ -61,11 +27,12 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
       </li>-->
-	  <span class="navbar-text">
-      Navbar text with an inline element
+	  <span style="margin-left: 50px" class="navbar-text">
+      <?php include("countFamille.php"); ?> familles inscrites pour l'année en cours
     </span>
+	<span style="margin-left: 20px"></span>
 	<span class="navbar-text">
-      Navbar text with an inline element
+	<?php include("countAdherent.php"); ?> adhérents inscrits pour l'année en cours
     </span>
 	
       
