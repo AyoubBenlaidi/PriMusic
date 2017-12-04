@@ -1,16 +1,18 @@
 <h3>Ajouter une commune</h3>
 
-<form method="post" action="/ajouter/ajouterCommune.php">
-		<label>Nom : </label>
-		<input type="text" name="nom" />
-		<input type="submit" value="Ajouter" />
+<form method="post" action="/ajouter/ajouterCommune.php" class="form-inline">
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Commune"/>
+			
+		
+		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />
 </form>
 
 <h3>Supprimer une commune</h3>
 
-<form method="post" action="/supprimer/supprimerCommune.php">
-		<label>Nom : </label>
-		<select name="cmn_id" id="cmn_id">
+<form method="post" action="/supprimer/supprimerCommune.php" class="form-inline" >
+	
+		<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="cmn_id" id="cmn_id">
+		<option selected>Commune </option>
 		<?php
 				for($i = 0, $size = count($communeArray); $i < $size; $i++) {
 		?>
@@ -19,5 +21,5 @@
 				}
 			?>
 		</select>
-		<input type="submit" value="Supprimer"/>
+		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
 </form>

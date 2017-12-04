@@ -1,8 +1,9 @@
 <h3>Modifier une réduction</h3>
 
-<form method="post" action="modifier/modifierReduction.php">
-	<label>Réduction : </label>
-	<select name="rdc_id" id="rdc_id" >
+<form method="post" action="modifier/modifierReduction.php" class="form-inline">
+	
+	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="rdc_id" id="rdc_id" >
+	<option selected> Reduction </option>	
 		<?php
 			for($i = 0, $size = count($reductionArray); $i < $size; $i++) {
 		?>
@@ -11,7 +12,7 @@
 			}
 		?>
 	</select><br>
-	<label>Nouvelle valeur : </label>
-	<input type="float" name="valeur" /></br>
-	<input type="submit" value="Modifier" />
+	<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="valeur" name="valeur" placeholder="Nouvelle valeur"/>
+	
+	<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Modifier" />
 </form>

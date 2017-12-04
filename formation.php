@@ -1,16 +1,17 @@
 <h3>Ajouter une formation musicale</h3>
 
-<form method="post" action="/ajouter/ajouterFormation.php">
-		<label>Nom : </label>
-		<input type="text" name="nom" />
-		<input type="submit" value="Ajouter" />
+<form method="post" action="/ajouter/ajouterFormation.php" class="form-inline">
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Formation"/>
+
+		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />
 </form>
 
 <h3>Supprimer une formation</h3>
 
-<form method="post" action="/supprimer/supprimerFormation.php">
-	<label>Nom : </label>
-	<select name="fmt_id" id="fmt_id">
+<form method="post" action="/supprimer/supprimerFormation.php" class="form-inline" >
+	
+	<select  class="custom-select mb-2 mr-sm-2 mb-sm-0" name="fmt_id" id="fmt_id">
+	<option selected>Formation </option>	
 		<?php
 				for($i = 0, $size = count($formationArray); $i < $size; $i++) {
 		?>
@@ -19,5 +20,5 @@
 				}
 			?>
 	</select>
-	<input type="submit" value="Supprimer"/>
+	<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
 </form>

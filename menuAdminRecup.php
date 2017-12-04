@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 include("Query.php");
 	$profArray = databaseQuery("SELECT prof_id,prof_nom,prof_prenom FROM professeur");

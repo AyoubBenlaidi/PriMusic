@@ -1,16 +1,18 @@
 <h3>Ajouter un atelier</h3>
 
-<form method="post" action="/ajouter/ajouterAtelier.php">
-		<label>Nom : </label>
-		<input type="text" name="nom" />
-		<input type="submit" value="Ajouter" />
+<form method="post" action="/ajouter/ajouterAtelier.php" class="form-inline" >
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Atelier"/>
+
+
+		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />
 </form>
 
 <h3>Supprimer un atelier </h3>
 
 <form method="post" action="/supprimer/supprimerAtelier.php">
-		<label>Nom : </label>
-		<select name="atl_id" id="atl_id">
+		
+		<select class="custom-select mb-2 mr-sm-2 mb-sm-0"  name="atl_id" id="atl_id">
+		<option selected>Atelier</option>
 		<?php
 				for($i = 0, $size = count($atelierArray); $i < $size; $i++) {
 		?>
@@ -19,5 +21,5 @@
 				}
 			?>
 		</select>
-		<input type="submit" value="Supprimer"/>
+		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
 </form>

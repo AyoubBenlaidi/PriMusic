@@ -1,16 +1,18 @@
 <h3>Ajouter un instrument</h3>
 
-<form method="post" action="/ajouter/ajouterInstrument.php">
-	<label>Nom : </label>
-	<input type="text" name="instr_nom" />
-	<input type="submit" value="Ajouter" />
+<form method="post" action="/ajouter/ajouterInstrument.php" class="form-inline" >
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="instr_nom" name="instr_nom" placeholder="Nom de l'instrument"/>
+		
+	
+	<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />
 </form>
 
 <h3>Supprimer un instrument</h3>
 
 <form method="post" action="/supprimer/supprimerInstrument.php">
-		<label for="instr_id">Instrument : </label>
-		<select name="instr_id" id="instr_id" >
+		
+		<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="instr_id" id="instr_id" >
+		<option selected>Instrument</option>
 		<?php
 				for($i = 0, $size = count($instrArray); $i < $size; $i++) {
 		?>
@@ -19,5 +21,5 @@
 				}
 			?>
 		</select>
-		<input type="submit" value="Supprimer"/>
+		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
 </form>
