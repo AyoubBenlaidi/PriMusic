@@ -1,5 +1,16 @@
 <h3>Ajouter une formule</h3>
 
+
+<?php 
+include('Query.php');
+  $formuleArray = databaseQuery("SELECT fml_id, fml_nom, fml_num FROM formule");
+
+?>
+
+
+
+
+
 <form method="post" action="/ajouter/ajouterFormule.php" class="form-inline" >
 
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Nom"/>

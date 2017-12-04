@@ -1,5 +1,13 @@
 <h3>Ajouter une formation musicale</h3>
 
+<?php 
+include('Query.php');
+   $formationArray = databaseQuery("SELECT * FROM formation");
+ 
+?>
+
+
+
 <form method="post" action="/ajouter/ajouterFormation.php" class="form-inline">
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Formation"/>
 

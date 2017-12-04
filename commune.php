@@ -1,5 +1,16 @@
 <h3>Ajouter une commune</h3>
 
+
+<?php 
+include('Query.php');
+  $communeArray = databaseQuery("SELECT cmn_id,cmn_nom FROM commune");
+ 
+?>
+
+
+
+
+
 <form method="post" action="/ajouter/ajouterCommune.php" class="form-inline">
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Commune"/>
 			

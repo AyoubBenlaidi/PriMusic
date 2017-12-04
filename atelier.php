@@ -1,5 +1,10 @@
 <h3>Ajouter un atelier</h3>
 
+<?php include('Query.php');
+$atelierArray = databaseQuery("SELECT atl_id, atl_nom FROM atelier");
+?>
+
+
 <form method="post" action="/ajouter/ajouterAtelier.php" class="form-inline" >
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Atelier"/>
 

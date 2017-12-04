@@ -1,4 +1,16 @@
 <h3>Ajouter un instrument</h3>
+<?php
+include("Query.php");
+ $instrArray = databaseQuery("SELECT instr_id, instr_nom FROM instrument");
+ 
+ 
+
+
+?>
+
+
+
+
 
 <form method="post" action="/ajouter/ajouterInstrument.php" class="form-inline" >
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="instr_nom" name="instr_nom" placeholder="Nom de l'instrument"/>

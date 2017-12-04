@@ -1,4 +1,11 @@
 <h3>Modifier une réduction</h3>
+<?php 
+include('Query.php');
+  $reductionArray = databaseQuery("SELECT rdc_id, rdc_nom, rdc_valeur, rdc_type FROM reductions");
+
+?>
+
+
 
 <form method="post" action="modifier/modifierReduction.php" class="form-inline">
 	

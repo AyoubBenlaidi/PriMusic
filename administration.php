@@ -15,7 +15,7 @@
   <body>
   <?php
     include("menuAdmin.php");
-
+   
   ?>
  
 
@@ -23,15 +23,15 @@
 <div class="jumbotron">
             <div class="row">
                 <div class="col-sm-3">
-                    <button type="button" class="btn btn-primary btn-block btn_load_ajax" lien="professeur.php">Professeur</button><br>
-                    <button type="button" class="btn btn-primary btn-block btn_load_ajax" lien="instrument.php">Instrument</button><br>
-                    <button type="button" class="btn btn-primary btn-block btn_load_ajax" lien="atelier.php">Atelier</button><br>
-                    <button type="button" class="btn btn-primary btn-block btn_load_ajax" lien="formule.php">Formule</button><br>
-                    <button type="button" class="btn btn-primary btn-block btn_load_ajax" lien="reduction.php">Réduction</button><br>
-                    <button type="button" class="btn btn-primary btn-block btn_load_ajax" lien="commune.php">Commune</button><br>
-                    <button type="button" class="btn btn-primary btn-block btn_load_ajax" lien="formation.php">Formation musicale</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="professeur.php">Professeur</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="instrument.php">Instrument</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="atelier.php">Atelier</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="formule.php">Formule</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="reduction.php">Réduction</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="commune.php">Commune</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="formation.php">Formation musicale</button><br>
                 </div>
-                <div class="col-sm-9" id="ajax_load_result">
+                <div class="col-sm-9 card" id="ajax_load_result">
 
                 </div>
             </div>
