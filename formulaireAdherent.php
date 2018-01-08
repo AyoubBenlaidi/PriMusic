@@ -1,133 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Insérer</title>
+  <title>Ajouter Adhérents</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <meta charset="utf-8" />
-  <style>
-  label{
-    display: inline-block;
-    float: left;
-    clear: left;
-    width: 250px;
-    text-align: right;
-    margin-bottom: 5px;
-  }
-  input, select {
-    display: inline-block;
-    float: left;
-  }
-  .submit{
-    margin-bottom: 20px;
-  }
-  </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ 
   <script type="text/javascript" src="scriptAdh.js"></script>
 </head>
 
 <?php include("menu.php"); ?>
 
 <body>
-  <h2>Insérer dans la base de données</h2>
+  <h2 style="text-align: center;">Membres de la famille <?php echo $_SESSION['fml_nom']; ?> </h2>
+<div id="membre1" >
+<?php include("addAdherent.php") ; ?>
+</div>
 
-  <p>
-    Famille <?php echo $_SESSION['fml_nom']; ?> insérée dans la base ! Veuillez créer des adherents de cette famille :
-
-    <form method="post" action="/ajouter/ajouterAdherent.php">
-      <div align="justify">
-        <label>Numéro de famille : </label><input type="number"  readonly="readonly" name="adh_fml" value = "<?php echo $_SESSION['fml_id'];?>"/> <br/>
-        <label>Nom : </label><input type="text" name="adh_nom" value = "<?php echo $_SESSION['fml_nom'];?>"/> <br/>
-        <label>Prénom : </label><input type="text" name="adh_prenom" /> <br/>
-        <label>Date de naissance : </label><input type="date" name="adh_age"/> <br/>
-        <label>Sexe : </label>
-        <label>Homme </label><input type="radio" name="adh_sexe" value="homme" checked="checked">
-        <label>Femme</label><input type="radio" name="adh_sexe" value="femme"> <br>
-        <label>Instrument 1 : </label>
-        <select name="adh_instr1" id="adh_instr1" >
-          <option value=""></option>
-          <?php
-          for($i = 0, $size = count($instrArray); $i < $size; $i++) {
-            ?>
-            <option value="<?php echo $instrArray[$i][0] ?>"><?php echo $instrArray[$i][1] ?></option>
-            <?php
-          }
-          ?>
-        </select>
-
-        <br/>
-
-        <label>Professeur 1 : </label>
-        <select name="adh_prof1" id="adh_prof1">
-          <option value=""></option>
-        </select>
-
-        <br/>
-
-        <label>Instrument 2 : </label>
-        <select name="adh_instr2" id="adh_instr2">
-          <option value=""></option>
-          <?php
-          for($i = 0, $size = count($instrArray); $i < $size; $i++) {
-            ?>
-            <option value="<?php echo $instrArray[$i][0] ?>"><?php echo $instrArray[$i][1] ?></option>
-            <?php
-          }
-          ?>
-        </select> <br/>
-
-        <label>Professeur 2 : </label>
-        <select name="adh_prof2" id="adh_prof2">
-          <option value=""></option>
-        </select>
-
-        <br/>
-
-        <label>Atelier 1 : </label>
-        <select name="adh_atelier1" id="adh_atelier1">
-          <option value=""></option>
-          <?php
-          for($i = 0, $size = count($atelierArray); $i < $size; $i++) {
-            ?>
-            <option value="<?php echo $atelierArray[$i][0] ?>"><?php echo $atelierArray[$i][1] ?></option>
-            <?php
-          }
-          ?>
-        </select> <br/>
-
-        <label>Atelier 2 : </label>
-        <select name="adh_atelier2" id="adh_atelier2">
-          <option value=""></option>
-          <?php
-          for($i = 0, $size = count($atelierArray); $i < $size; $i++) {
-            ?>
-            <option value="<?php echo $atelierArray[$i][0] ?>"><?php echo $atelierArray[$i][1] ?></option>
-            <?php
-          }
-          ?>
-        </select> <br/>
-
-        <label>Classe solfège : </label>
-        <select name="adh_formation" id="adh_formation">
-          <option value=""></option>
-          <?php
-          for($i = 0, $size = count($formationArray); $i < $size; $i++) {
-            ?>
-            <option value="<?php echo $formationArray[$i][0] ?>"><?php echo $formationArray[$i][1] ?></option>
-            <?php
-          }
-          ?>
-        </select> <br/>
-
-        <label>Classe : </label>
-        <input type="text" name="adh_classe" /> <br/>
-
-        <label>Rentre seul : </label>
-        <input type="text" name="adh_seul" /> <br/>
-        <label></label>
-        <div id="submit">
-          <input type="submit" name="continue" value="Valider et ajouter nouveau" />
-          <input type="submit" name="finish" value="Valider et finir" />
-        </div>
-      </p>
-    </div>
   </body>
   </html>

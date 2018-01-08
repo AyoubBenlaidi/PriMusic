@@ -13,6 +13,7 @@ include('Query.php');
 
 <form method="post" action="/ajouter/ajouterCommune.php" class="form-inline">
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Commune"/>
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="zip" name="zip" placeholder="Code postal"/>
 			
 		
 		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />

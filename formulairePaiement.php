@@ -3,21 +3,15 @@
 <head>
   <title>Formulaire formule</title>
   <meta charset="utf-8" />
-  <style>
-  #all label{
-    display: inline-block;
-    float: left;
-    clear: left;
-    width: 250px;
-    text-align: right;
-    margin-bottom: 5px;
-  }
-  #all input,select{
-    display: inline-block;
-    float: left;
-  }
-  </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <script>
   $("document").ready(function(){
     $('#checkAll').click(function(event) {
@@ -33,7 +27,8 @@
 <?php include("menu.php"); ?>
 
 <body>
-  <h2>Formulaire</h2>
+  <h2 style="text-align: center;" >Formulaire</h2>
+  <div id="formPaiement" style="margin-left:10% ;width:70%; ">
   <form method="post" action="/ajouter/ajouterPaiement.php">
     <div align="justify">
       <p>
@@ -90,5 +85,6 @@
       </p>
     </div>
   </form>
+  </div>
 </body>
 </html>
