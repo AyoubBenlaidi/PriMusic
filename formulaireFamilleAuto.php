@@ -9,54 +9,91 @@
 
 ?>
 <html>
-  <head>
-    <title>Formulaire</title>
-    <meta charset="utf-8" />
-		<style>
-			label{
-				display: inline-block;
-			 	float: left;
-			  clear: left;
-			  width: 250px;
-			  text-align: right;
-				margin-bottom: 5px;
-			}
-			input, select {
-			  display: inline-block;
-			  float: left;
-			}
-		</style>
-  </head>
+	<head>
+		<title>Formulaire</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-	<?php
-		include("menu.php");
-		$currentArray = databaseQuery("SELECT fml_id, fml_name, fml_mail, fml_phone, fml_address, fml_commune, fml_zip FROM famille WHERE fml_id='" . $_POST['id'] . "'");
-	?>
-  <body>
-    <h2>Formulaire</h2>
-		<form method="post" action="/modifier/modifierFamille.php">
- 			<div align="justify">
-				<label>Id :</label> <input type="text" name="id" readonly="readonly" value="<?php echo $currentArray[0][0]; ?>"/> <br />
-				<label>Nom :</label> <input type="text" name="nom" value="<?php echo $currentArray[0][1]; ?>"/> <br />
-				<label>Mail :</label> <input type="text" name="mail" value="<?php echo $currentArray[0][2]; ?>"/> <br />
-				<label>Téléphone :</label> <input type="text" name="telephone" value="<?php echo $currentArray[0][3]; ?>" /> <br />
-				<label>Adresse :</label> <input type="text" name="adresse" value="<?php echo $currentArray[0][4]; ?>"/> <br />
-				<label>Code postal :</label> <input type="text" name="code_postal" value="<?php echo $currentArray[0][6]; ?>"/> <br />
-				<label>Commune :</label>
-				<select name="cmn_id" id="cmn_id">
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-				<?php
-					for($i = 0, $size = count($communeArray); $i < $size; $i++) {
-				?>
-						<option value="<?php echo $communeArray[$i][0]?>" <?php if($currentArray[0][5]==$communeArray[$i][0]){echo "selected";}?>><?php echo $communeArray[$i][1] ?></option>
-   			<?php
-   				}
-   			?>
-				</select>
-				<br/>
-				<label></label>
-				<input type="submit" value = "Valider" />
-			</div>
-		</form>
-  </body>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css">
+		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		<meta charset="utf-8" />
+
+		<script type="text/javascript" src="scriptAdh.js"></script>
+	</head>
+
+	<body>
+
+		<?php
+			include("menu.php");
+			
+			$currentArray = databaseQuery("SELECT fml_id, fml_name, fml_mail, fml_phone, fml_address, fml_commune, fml_zip FROM famille WHERE fml_id='" . $_POST['id'] . "'");
+		?>
+		<div class="container">
+			<h2>Formulaire</h2>
+			<form method="post" action="/modifier/modifierFamille.php">
+				<div class="form-group row">
+					<label class="control-label col-3">Nom :</label>
+					<div class="col-9">
+						<div class="input-group">
+							<input type="text" class="form-control" name="nom" value="<?php echo $currentArray[0][1]; ?>"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-3">Mail :</label>
+					<div class="col-9">
+						<div class="input-group">
+							<input type="text" class="form-control" name="mail" value="<?php echo $currentArray[0][2]; ?>"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-3">Téléphone :</label>
+					<div class="col-9">
+						<div class="input-group">
+							<input type="text" class="form-control" name="telephone" value="<?php echo $currentArray[0][3]; ?>" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-3">Adresse :</label>
+					<div class="col-9">
+						<div class="input-group">
+							<input type="text" class="form-control" name="adresse" value="<?php echo $currentArray[0][4]; ?>"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-3">Code postal :</label>
+					<div class="col-9">
+						<div class="input-group">
+							<input type="text" class="form-control" name="code_postal" value="<?php echo $currentArray[0][6]; ?>"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="control-label col-3">Commune :</label>
+					<div class="col-9">
+						<select name="cmn_id" id="cmn_id" class="select form-control">
+
+						<?php
+							for($i = 0, $size = count($communeArray); $i < $size; $i++) {
+						?>
+								<option value="<?php echo $communeArray[$i][0]?>" <?php if($currentArray[0][5]==$communeArray[$i][0]){echo "selected";}?>><?php echo $communeArray[$i][1] ?></option>
+						<?php
+							}
+						?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<input type="submit"  class="btn btn-primary btn-block" value = "Valider" />
+				</div>   
+			</form>
+		</div>
+	</body>
 </html>
