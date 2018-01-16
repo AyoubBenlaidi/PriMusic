@@ -35,6 +35,7 @@
 		<div class="container">
 			<h2>Formulaire</h2>
 			<form method="post" action="/modifier/modifierFamille.php">
+			<input type="hidden" id="id" name="id" value="<?php echo $currentArray[0][0]; ?>" />
 				<div class="form-group row">
 					<label class="control-label col-3">Nom :</label>
 					<div class="col-9">
