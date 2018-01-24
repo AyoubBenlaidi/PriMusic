@@ -5,7 +5,7 @@ $atelierArray = databaseQuery("SELECT atl_id, atl_nom FROM atelier");
 ?>
 
 
-<form method="post" action="/ajouter/ajouterAtelier.php" class="form-inline" >
+<form method="post" action="./ajouter/ajouterAtelier.php" class="form-inline" >
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Atelier"/>
 
 
@@ -14,7 +14,7 @@ $atelierArray = databaseQuery("SELECT atl_id, atl_nom FROM atelier");
 
 <h3>Supprimer un atelier </h3>
 
-<form method="post" action="/supprimer/supprimerAtelier.php">
+<form method="post" action="./supprimer/supprimerAtelier.php">
 		
 		<select class="custom-select mb-2 mr-sm-2 mb-sm-0"  name="atl_id" id="atl_id">
 		<option selected>Atelier</option>

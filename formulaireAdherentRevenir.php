@@ -27,7 +27,7 @@
 <?php include("menu.php"); ?>
 <body>
   <h2>Insérer dans la base de données</h2>
-  <form method="post" action="/ajouter/ajouterAdherent.php">
+  <form method="post" action="./ajouter/ajouterAdherent.php">
     <div align="justify">
       <label>Numéro de famille : </label><input type="number"  readonly="readonly" name="adh_fml" value = "<?php echo $_SESSION['fml_id'];?>"/> <br/>
       <label>Nom : </label><input type="text" name="adh_nom" value = "<?php echo $_SESSION['fml_nom'];?>"/> <br/>

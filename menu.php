@@ -12,16 +12,16 @@ $reductionArray = databaseQuery("SELECT rdc_id, rdc_nom, rdc_valeur, rdc_type FR
 if (isset($_SESSION['user'])) {
 if(($_SESSION['user']!='membre')){
 echo "Vous n'êtes pas autorisé à voir ce contenu !";
-header("refresh:1;url=/index.php");
+header("refresh:1;url=./index.php");
 die();
 }
 }else{
 echo "Vous devez vous connecter !";
-header("refresh:1;url=/index.php");
+header("refresh:1;url=./index.php");
 die();
 }
 
-$currentPage = basename("/{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", ".php");
+$currentPage = basename("./{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", ".php");
 switch ($currentPage) {
 	case "formulaireFamille":
 		$activeForm = 'class="active"';
@@ -41,32 +41,14 @@ switch ($currentPage) {
 	?>
 
 
-<!--
-<ul>
-   
-	
-	<div class="floatright">
-                <li><?php include("countFamille.php"); ?> familles inscrites pour l'année en cours</li><br/>
-				<li><?php include("countAdherent.php"); ?> adhérents inscrits pour l'année en cours</li>
-    </div>
-</ul>
--->
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<a class="navbar-brand" <?php echo $activeAdmin ?> href="/formulaireFamille.php">Formulaire</a>
+<a class="navbar-brand" <?php echo $activeAdmin ?> href="./formulaireFamille.php">Formulaire</a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <!--<li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>-->
 	  <span style="margin-left: 50px" class="navbar-text">
       <?php include("countFamille.php"); ?> familles inscrites pour l'année en cours
     </span>
@@ -81,6 +63,6 @@ switch ($currentPage) {
   </div>
   <ul class="navbar-nav" >
   <li class="nav-item">
-        <a class="nav-link" href="/login/logout.php">Se déconnecter </a>
+        <a class="nav-link" href="./login/logout.php">Se déconnecter </a>
       </li></ul>
 </nav>

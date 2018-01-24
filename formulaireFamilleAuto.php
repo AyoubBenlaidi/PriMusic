@@ -3,7 +3,7 @@
 
 	if(isset($_POST['supprimer'])){
 		include("supprimer/supprimerFamille.php");
-		header("refresh:1;url=/formulaireFamille.php");
+		header("refresh:1;url=./formulaireFamille.php");
 		die();
 	}
 
@@ -24,9 +24,9 @@
 
 		<script type="text/javascript" src="scriptAdh.js"></script>
 	</head>
-
+	
 	<body>
-
+		
 		<?php
 			include("menu.php");
 			
@@ -34,8 +34,8 @@
 		?>
 		<div class="container">
 			<h2>Formulaire</h2>
-			<form method="post" action="/modifier/modifierFamille.php">
-			<input type="hidden" id="id" name="id" value="<?php echo $currentArray[0][0]; ?>" />
+			<form method="post" action="./modifier/modifierFamille.php">
+				<input type="hidden" id="id" name="id" value="<?php echo $currentArray[0][0]; ?>"/>
 				<div class="form-group row">
 					<label class="control-label col-3">Nom :</label>
 					<div class="col-9">
@@ -71,9 +71,15 @@
 				<div class="form-group row">
 					<label class="control-label col-3">Code postal :</label>
 					<div class="col-9">
-						<div class="input-group">
-							<input type="text" class="form-control" name="code_postal" value="<?php echo $currentArray[0][6]; ?>"/>
-						</div>
+						<select id="code_postal" name="code_postal" class="select form-control">
+						<?php
+							for($i = 0, $size = count($zipArray); $i < $size; $i++) {
+						?>
+							<option value="<?php echo $zipArray[$i][0] ?>" <?php if($currentArray[0][6]==$zipArray[$i][0]){echo "selected";}?>><?php echo $zipArray[$i][0] ?></option>
+						<?php
+							}
+						?>
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">

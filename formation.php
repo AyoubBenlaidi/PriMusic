@@ -8,7 +8,7 @@ include('Query.php');
 
 
 
-<form method="post" action="/ajouter/ajouterFormation.php" class="form-inline">
+<form method="post" action="./ajouter/ajouterFormation.php" class="form-inline">
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Formation"/>
 
 		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />
@@ -16,7 +16,7 @@ include('Query.php');
 
 <h3>Supprimer une formation</h3>
 
-<form method="post" action="/supprimer/supprimerFormation.php" class="form-inline" >
+<form method="post" action="./supprimer/supprimerFormation.php" class="form-inline" >
 	
 	<select  class="custom-select mb-2 mr-sm-2 mb-sm-0" name="fmt_id" id="fmt_id">
 	<option selected>Formation </option>	

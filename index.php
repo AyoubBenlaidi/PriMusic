@@ -48,7 +48,7 @@ img {
 
 	 <div align="justify">
 		 <h2>Login</h2>
-		<form method="post" action="/login/login.php">
+		<form method="post" action="./login/login.php">
 			<p>
 				<input type="text" placeholder="Nom" name="name" /> <br />
 				<input type="password" placeholder="Mot de passe" name="password" /> <br />

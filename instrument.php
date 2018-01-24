@@ -12,7 +12,7 @@ include("Query.php");
 
 
 
-<form method="post" action="/ajouter/ajouterInstrument.php" class="form-inline" >
+<form method="post" action="./ajouter/ajouterInstrument.php" class="form-inline" >
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="instr_nom" name="instr_nom" placeholder="Nom de l'instrument"/>
 		
 	
@@ -21,7 +21,7 @@ include("Query.php");
 
 <h3>Supprimer un instrument</h3>
 
-<form method="post" action="/supprimer/supprimerInstrument.php">
+<form method="post" action="./supprimer/supprimerInstrument.php">
 		
 		<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="instr_id" id="instr_id" >
 		<option selected>Instrument</option>
