@@ -89,7 +89,7 @@ top: 300px; left: 170px; z-index=40 ; ">
         <div style= "position: absolute;
 top: 300px; left: 120px; z-index=40 ; ">   
 
-        <form class="form-horizontal" method="post" action="/login/login.php" >
+        <form class="form-horizontal" method="post" action="./login/login.php" >
         <div class="form-group">
         <label for="name" class="control-label col-xs-5"></label> 
         <div class="col-xs-7">

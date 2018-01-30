@@ -5,15 +5,15 @@ include("Query.php");
 	if (isset($_SESSION['user'])) {
 		if(($_SESSION['user']!='admin')){
 		echo "Vous n'êtes pas autorisé à voir ce contenu !";
-			header("refresh:1;url=/index.php");
+			header("refresh:1;url=./index.php");
 			die();
 	}
 	}else{
 		echo "Vous devez vous connecter !";
-			header("refresh:1;url=/index.php");
+			header("refresh:1;url=./index.php");
 			die();
 	}
-	$currentPage = basename("/{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", ".php");
+	$currentPage = basename("./{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", ".php");
 	switch ($currentPage) {
 			case "administration":
 				$activeAdmin = 'class="active"';
@@ -40,7 +40,7 @@ include("Query.php");
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<a class="navbar-brand" <?php echo $activeAdmin ?> href="/administration.php">Administration</a>
+<a class="navbar-brand" <?php echo $activeAdmin ?> href="./administration.php">Administration</a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -67,6 +67,6 @@ include("Query.php");
   </div>
   <ul class="navbar-nav" >
   <li class="nav-item">
-        <a class="nav-link" href="/login/logout.php">Se déconnecter </a>
+        <a class="nav-link" href="./login/logout.php">Se déconnecter </a>
       </li></ul>
 </nav>

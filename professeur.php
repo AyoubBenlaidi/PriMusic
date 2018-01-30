@@ -15,7 +15,7 @@ include("Query.php");
 ?>
 
 
-<form method="post" action="/ajouter/ajouterProfesseur.php" class="form-inline" >
+<form method="post" action="./ajouter/ajouterProfesseur.php" class="form-inline" >
 	<!--	<label class="sr-only" for="prenom" >Prénom : </label> -->
 		<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="prenom" name="prenom" placeholder="Prénom"/>
 		
@@ -25,40 +25,31 @@ include("Query.php");
 		<select class="custom-select mb-2 mr-sm-2 mb-sm-0"  name="instr_id" id="instr_id"  >
  
 		<option selected>Instrument</option>
-  <?php
+			<?php
 				for($i = 0, $size = count($instrArray); $i < $size ; $i++) {
 			?>
-	 <option value="<?php echo $instrArray[$i][0]; ?>"><?php  echo $instrArray[$i][1]; ?></option>	
+				<option value="<?php echo $instrArray[$i][0]; ?>"><?php  echo $instrArray[$i][1]; ?></option>	
 			<?php
-			}
+				}
 			?>
+	</select>
 
-   
- 
-  </select>
-
-
-
-		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter"/>
+	<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter"/>
 
 </form>
 
 <h3>Supprimer un professeur</h3>
 
-<form method="post" action="/supprimer/supprimerProfesseur.php">
-<select class="custom-select mb-2 mr-sm-2 mb-sm-0"  name="instr_id" id="instr_id"  >
-
-	   <option selected>Nom</option>
- <?php
-	   		for($i = 0, $size = count($profArray); $i < $size; $i++) {
-		   ?>
-	<option value="<?php echo $profArray[$i][0] ?>"><?php  echo $profArray[$i][1], ' ', $profArray[$i][2] ?></option>
+<form method="post" action="./supprimer/supprimerProfesseur.php">
+<select class="custom-select mb-2 mr-sm-2 mb-sm-0"  name="prof_id" id="prof_id"  >
+	<option selected>Nom</option>
 	<?php
-	   		}
-		   ?>
-
-  
-
+	for($i = 0, $size = count($profArray); $i < $size; $i++) {
+   ?>
+		<option value="<?php echo $profArray[$i][0] ?>"><?php  echo $profArray[$i][1], ' ', $profArray[$i][2] ?></option>
+	<?php
+	}
+	?>
  </select>
-
+<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
 		</form>

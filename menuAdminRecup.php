@@ -12,15 +12,15 @@ include("Query.php");
 	if (isset($_SESSION['user'])) {
 		if(($_SESSION['user']!='admin')){
 		echo "Vous n'êtes pas autorisé à voir ce contenu !";
-			header("refresh:1;url=/index.php");
+			header("refresh:1;url=./index.php");
 			die();
 	}
 	}else{
 		echo "Vous devez vous connecter !";
-			header("refresh:1;url=/index.php");
+			header("refresh:1;url=./index.php");
 			die();
 	}
-	$currentPage = basename("/{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", ".php");
+	$currentPage = basename("./{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}", ".php");
 	switch ($currentPage) {
 			case "administration":
 				$activeAdmin = 'class="active"';

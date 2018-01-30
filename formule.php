@@ -11,7 +11,7 @@ include('Query.php');
 
 
 
-<form method="post" action="/ajouter/ajouterFormule.php" class="form-inline" >
+<form method="post" action="./ajouter/ajouterFormule.php" class="form-inline" >
 
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Nom"/>
 <input type="float" class="form-control mb-2 mr-sm-2 mb-sm-0" id="soucieu" name="soucieu" placeholder="Tarif Soucieu"/>
@@ -25,7 +25,7 @@ include('Query.php');
 
 <h3>Modifier les tarifs d'une formule</h3>
 
-<form method="post" action="/modifier/modifierFormule.php" class="form-inline">
+<form method="post" action="./modifier/modifierFormule.php" class="form-inline">
 		
 		<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="fml_id" id="fml_id">
 		<option selected>Nom</option>
@@ -49,7 +49,7 @@ include('Query.php');
 
 <h3>Supprimer une formule</h3>
 
-<form method="post" action="/supprimer/supprimerFormule.php" class="form-inline" >
+<form method="post" action="./supprimer/supprimerFormule.php" class="form-inline" >
 	
 	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="fml_id" id="fml_id">
 	<option selected>Nom</option>	

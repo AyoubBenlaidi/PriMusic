@@ -88,9 +88,18 @@
 <?php include("menu.php"); ?>
 
 <body>
+
+<h1> <?php echo($_SESSION['adh_nom']) ; ?> </h1>
+
+
+
+
+
+
+
   <h2 style="text-align: center;" >Formulaire</h2>
   <div id="formPaiement" style="margin-left:10% ;width:70%; ">
-  <form method="post" action="/ajouter/ajouterPaiement.php">
+  <form method="post" action="./ajouter/ajouterPaiement.php">
   <div class="form-group" >
     <label for="nom" class="control-label">Éditer la facture au nom de :</label> 
     <div class="input-group">

@@ -21,15 +21,18 @@
 <body>
   <h2 style="text-align: center;">Membres de la famille <?php echo $_SESSION['fml_nom']; ?> </h2>
 <div class="container">
-	<form class="form-horizontal" method="post" action="/ajouter/ajouterAdherent.php">
+	<form class="form-horizontal" method="post" action="./ajouter/ajouterAdherent.php">
 		<div class="row">
-			<div id="membre1" class="form-group col-4">
+			<div id="membre1" class="form-group col-3">
 				<?php include("addAdherent.php") ; ?>
 			</div>
-			<div id="membre2" class="form-group col-4">
+			<div id="membre2" class="form-group col-3">
 				<?php include("addAdherent.php") ; ?>
 			</div>
-			<div id="membre3" class="form-group col-4">
+			<div id="membre3" class="form-group col-3">
+				<?php include("addAdherent.php") ; ?>
+			</div>
+			<div id="membre3" class="form-group col-3">
 				<?php include("addAdherent.php") ; ?>
 			</div>
 		</div>  

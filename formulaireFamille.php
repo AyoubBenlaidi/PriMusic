@@ -20,7 +20,7 @@
 	<div class="jumbotron">
 <div id="RetrouverFamille"  >
 	<h2 style="text-align: center;">Retrouver une famille déjà existante</h2>
-		<form class="form-inline" style="margin-left:10% ;" method="post" action="/retrouverNomFamille.php">
+		<form class="form-inline" style="margin-left:10% ;" method="post" action="./retrouverNomFamille.php">
 		<div class="form-group" style="width:70% ; margin-right:15px ; ">
 		<label for="nom" class="control-label"></label> 
 		<div class="input-group" style="width:100% ; ">
@@ -40,7 +40,7 @@
 
         <h2 style="text-align: center;">Ajouter famille</h2>
 
-		<form method="post" action="/ajouter/ajouterFamille.php" style="width:70% ; margin-left:10% ;" >
+		<form method="post" action="./ajouter/ajouterFamille.php" style="width:70% ; margin-left:10% ;" >
   
 <div class="form-group" >
     <label for="nom" class="control-label">Nom</label> 
