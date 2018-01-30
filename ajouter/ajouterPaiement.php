@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php
-		include("/../Query.php");
+		include("../Query.php");
 		$somme = 0;
 		$nbFml16 = 0;
 		$nbFml78 = 0;
@@ -9,7 +9,7 @@
 		$reduc16 = 0;
 		$reducPre = 0;
 		$tarif = 0;
-		$bdd = new PDO('mysql:host=localhost;dbname=pritest;charset=utf8', 'root', '');
+		$bdd = getDatabaseConnexion();
 		$preinscription = $bdd->query("SELECT rdc_valeur FROM reductions WHERE rdc_nom='preinscription'")->fetch();
 		$deuxFormules = $bdd->query("SELECT rdc_valeur FROM reductions WHERE rdc_nom='2 formules'")->fetch();
 		$troisFormules = $bdd->query("SELECT rdc_valeur FROM reductions WHERE rdc_nom='3 formules'")->fetch();
@@ -239,6 +239,6 @@
 		}
 
 		$_SESSION['fml_array'] = $arrayFormule;
-		include("/../fiche_famillePDF.php");
+		include("../fiche_famillePDF.php");
 
 ?>
