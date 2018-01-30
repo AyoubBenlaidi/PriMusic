@@ -30,6 +30,8 @@
                     <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="reduction.php">Réduction</button><br>
                     <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="commune.php">Commune</button><br>
                     <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="formation.php">Formation musicale</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block btn_load_ajax" lien="avance.php">Paramètres avancés</button><br>
+              
                 </div>
                 <div class="col-sm-9 card" id="ajax_load_result">
 
