@@ -104,7 +104,7 @@ top: 300px; left: 120px; z-index=40 ; ">
         <div class="col-xs-7">
           <div class="input-group">
             <div class="input-group-addon">Mot de passe</div> 
-            <input id="password" name="password" placeholder="Mot de passe " type="text" class="form-control">
+            <input id="password" name="password" placeholder="Mot de passe " type="password" class="form-control">
           </div>
         </div>
       </div> 

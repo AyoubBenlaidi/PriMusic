@@ -89,7 +89,25 @@
 
 <body>
 
-<h1> <?php echo($_SESSION['adh_nom']) ; ?> </h1>
+
+   <h1 style="text-align: center;"
+
+ >Recapitulatif</h1>
+
+<div class="recap" style="width:70% ; display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%; 
+    margin-bottom: 5%;
+
+" >
+
+<?php include('showMembre.php') ; ?>
+
+
+</div>
+
+</h1>
 
 
 
