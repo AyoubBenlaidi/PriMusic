@@ -11,31 +11,40 @@
 			}
 			if ($_POST['adh_instr1'][$comptage_adherents] === '')
 			{
+
 				$_POST['adh_instr1'][$comptage_adherents] = NULL;
+				$_SESSION['adh_instr1'.$comptage_adherents]="" ;
 			}
 			if ($_POST['adh_instr2'][$comptage_adherents] === '')
 			{
 				$_POST['adh_instr2'][$comptage_adherents] = NULL;
+				$_SESSION['adh_instr2'.$comptage_adherents]="" ;
 			}
 			if ($_POST['adh_prof1'][$comptage_adherents] === '')
 			{
+				
 				$_POST['adh_prof1'][$comptage_adherents] = NULL;
+				$_SESSION['adh_prof1'.$comptage_adherents]="" ;
 			}
 			if ($_POST['adh_prof2'][$comptage_adherents] === '')
 			{
 				$_POST['adh_prof2'][$comptage_adherents] = NULL;
+				$_SESSION['adh_prof2'.$comptage_adherents]="" ;
 			}
 			if ($_POST['adh_atelier1'][$comptage_adherents] === '')
 			{
 				$_POST['adh_atelier1'][$comptage_adherents] = NULL;
+				$_SESSION['adh_atelier1'.$comptage_adherents]="" ;
 			}
 			if ($_POST['adh_atelier2'][$comptage_adherents] === '')
 			{
 				$_POST['adh_atelier2'][$comptage_adherents] = NULL;
+				$_SESSION['adh_atelier2'.$comptage_adherents]="" ;
 			}
 			if ($_POST['adh_formation'][$comptage_adherents] === '')
 			{
 				$_POST['adh_formation'][$comptage_adherents] = NULL;
+				$_SESSION['adh_formation'.$comptage_adherents]="" ;
 			}
 			if (!isset($_POST['adh_seul'][$comptage_adherents]) or $_POST['adh_seul'][$comptage_adherents] == null or $_POST['adh_seul'][$comptage_adherents] == '')
 			{
@@ -71,20 +80,20 @@
 			
 			$_SESSION['nb_adh'] = $_SESSION['nb_adh'] +1;
 
-			$_SESSION['adh_fml'+$comptage_adherents]=$_POST['adh_fml'][$comptage_adherents];
-			$_SESSION['adh_nom'+$comptage_adherents]=$_POST['adh_nom'][$comptage_adherents];
-			$_SESSION['adh_prenom'+$comptage_adherents]=$_POST['adh_prenom'][$comptage_adherents];
-			$_SESSION['adh_age'+$comptage_adherents]=$date;
-			$_SESSION['adh_instr1'+$comptage_adherents]=$_POST['adh_instr1'][$comptage_adherents];
-			$_SESSION['adh_prof1'+$comptage_adherents]=$_POST['adh_prof1'][$comptage_adherents];
-			$_SESSION['adh_instr2'+$comptage_adherents]=$_POST['adh_instr2'][$comptage_adherents];
-			$_SESSION['adh_prof2'+$comptage_adherents]=$_POST['adh_prof2'][$comptage_adherents];
-			$_SESSION['adh_atelier1'+$comptage_adherents]=$_POST['adh_atelier1'][$comptage_adherents];
-			$_SESSION['adh_atelier2'+$comptage_adherents]=$_POST['adh_atelier2'][$comptage_adherents];
-			$_SESSION['adh_formation'+$comptage_adherents]=$_POST['adh_formation'][$comptage_adherents];
-			$_SESSION['adh_classe'+$comptage_adherents]=$_POST['adh_classe'][$comptage_adherents];
-			$_SESSION['adh_seul'+$comptage_adherents]=$_POST['adh_seul'][$comptage_adherents];
-			$_SESSION['adh_sexe'+$comptage_adherents]=$_POST['adh_sexe'][$comptage_adherents];
+			$_SESSION['adh_fml'.$comptage_adherents]=$_POST['adh_fml'][$comptage_adherents];
+			$_SESSION['adh_nom'.$comptage_adherents]=$_POST['adh_nom'][$comptage_adherents];
+			$_SESSION['adh_prenom'.$comptage_adherents]=$_POST['adh_prenom'][$comptage_adherents];
+			$_SESSION['adh_age'.$comptage_adherents]=$date;
+			$_SESSION['adh_instr1'.$comptage_adherents]=$_POST['adh_instr1'][$comptage_adherents];
+			$_SESSION['adh_prof1'.$comptage_adherents]=$_POST['adh_prof1'][$comptage_adherents];
+			$_SESSION['adh_instr2'.$comptage_adherents]=$_POST['adh_instr2'][$comptage_adherents];
+			$_SESSION['adh_prof2'.$comptage_adherents]=$_POST['adh_prof2'][$comptage_adherents];
+			$_SESSION['adh_atelier1'.$comptage_adherents]=$_POST['adh_atelier1'][$comptage_adherents];
+			$_SESSION['adh_atelier2'.$comptage_adherents]=$_POST['adh_atelier2'][$comptage_adherents];
+			$_SESSION['adh_formation'.$comptage_adherents]=$_POST['adh_formation'][$comptage_adherents];
+			$_SESSION['adh_classe'.$comptage_adherents]=$_POST['adh_classe'][$comptage_adherents];
+			$_SESSION['adh_seul'.$comptage_adherents]=$_POST['adh_seul'][$comptage_adherents];
+			$_SESSION['adh_sexe'.$comptage_adherents]=$_POST['adh_sexe'][$comptage_adherents];
 		
 
 
