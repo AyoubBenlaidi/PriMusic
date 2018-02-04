@@ -3,19 +3,18 @@
 	include_once('../Query.php');
 	$annee = databaseQuery('SELECT usr_annee FROM users WHERE usr_name = \'admin\'');
 	
-	$sql = 'INSERT INTO famille(fml_name, fml_mail, fml_phone, fml_address, fml_commune, fml_zip,fml_annee) VALUES(:nom, :mail, :telephone, :adresse, :commune, :code_postal, :fml_annee)';
+	$sql = 'INSERT INTO famille(fml_name, fml_mail, fml_phone, fml_address, fml_commune, fml_annee) VALUES(:nom, :mail, :telephone, :adresse, :commune, :fml_annee)';
 	$sqlParams = array(
 		'nom' => $_POST['nom'],
 		'mail' => $_POST['mail'],
 		'telephone' => $_POST['telephone'],
 		'adresse' => $_POST['adresse'],
 		'commune' => $_POST['cmn_id'],
-		'code_postal' => $_POST['code_postal'],
 		'fml_annee' => $annee[0][0]
 	);
 	$rep = databaseQueryWrite($sql,$sqlParams);
 
-	$fml_id = databaseQuery('SELECT fml_id FROM famille WHERE fml_name = \'' . $_POST['nom'] .'\' AND fml_mail = \''.$_POST['mail'].'\' AND fml_phone = \''.$_POST['telephone'].'\' AND fml_address = \''.$_POST['adresse'].'\' AND fml_commune = '.$_POST['cmn_id'].' AND fml_zip = \''.$_POST['code_postal'].'\' AND fml_annee = \''.$annee[0][0].'\'');
+	$fml_id = databaseQuery('SELECT fml_id FROM famille WHERE fml_name = \'' . $_POST['nom'] .'\' AND fml_mail = \''.$_POST['mail'].'\' AND fml_phone = \''.$_POST['telephone'].'\' AND fml_address = \''.$_POST['adresse'].'\' AND fml_commune = '.$_POST['cmn_id'].' AND fml_annee = \''.$annee[0][0].'\'');
 
 	$_SESSION['fml_id'] = $fml_id[0][0];
 	$_SESSION['fml_nom'] = $_POST['nom'];

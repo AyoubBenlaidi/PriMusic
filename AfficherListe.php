@@ -13,6 +13,7 @@
 				case "getCommune" : getCommune(); break;
 				case "getDivers" : getDivers(intval($_GET["divers_id"])); break;
 				case "getProfByInstr" : getProfByInstr(); break;
+				case "getZip" : getZip(); break;
 			}
 		}
 	}
@@ -91,5 +92,13 @@
 		$profArray = databaseQuery("SELECT p.prof_id, p.prof_prenom, p.prof_nom from professeur p  WHERE p.instr_id = '".$instr_id."'");
 
 		echo json_encode($profArray);
+	}
+
+	function  getZip() {
+
+		$zip = $_GET["zip"];
+		$cmnArray = databaseQuery("SELECT cmn_id,cmn_nom FROM commune WHERE cmn_zip = ".$zip);
+
+		echo json_encode($cmnArray);
 	}
 ?>

@@ -20,7 +20,7 @@
 
 	<?php include("menu.php"); ?>
 	<?php include("Query.php");
-	$familleDataArray = databaseQuery("SELECT fml_id,fml_name, fml_mail, fml_phone, fml_address, fml_commune, fml_zip FROM famille WHERE fml_name LIKE '%".$_POST['nom']."%'");
+	$familleDataArray = databaseQuery("SELECT fml_id,fml_name, fml_mail, fml_phone, fml_address, cmn_nom, cmn_zip FROM famille INNER JOIN commune ON cmn_id = fml_commune WHERE fml_name LIKE '%".$_POST['nom']."%'");
 
 	?>
 
@@ -47,11 +47,15 @@
 						<td> <?php echo $familleDataArray[$i][5];?> </td>
 						<td> <?php echo $familleDataArray[$i][6];?> </td>
 						<td class="row">
-							<form method="post" class="col-6" action="./formulaireFamilleAuto.php" id="formChoisir<?php echo $familleDataArray[$i][0];?>">
+							<form method="post" class="col-4" action="./retrouverAdherentsFamille.php" id="formChoisir<?php echo $familleDataArray[$i][0];?>">
 								<input type='hidden' name='id' value="<?php echo $familleDataArray[$i][0];?>" />
 								<button type="button" famillenum="<?php echo $familleDataArray[$i][0];?>" class="btn btn-success buttonChoisir" title="Choisir"><i class="fa fa-check" aria-hidden="true"></i></button>
 							</form>
-							<form method="post" class="col-6" action="./supprimer/supprimerFamille.php" id="formSupprimer<?php echo $familleDataArray[$i][0];?>">
+							<form method="post" class="col-4" action="./formulaireFamilleAuto.php" id="formModifier<?php echo $familleDataArray[$i][0];?>">
+								<input type='hidden' name='id' value="<?php echo $familleDataArray[$i][0];?>" />
+								<button type="button" famillenum="<?php echo $familleDataArray[$i][0];?>" class="btn btn-primary buttonModifier" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+							</form>
+							<form method="post" class="col-4" action="./supprimer/supprimerFamille.php" id="formSupprimer<?php echo $familleDataArray[$i][0];?>">
 								<input type='hidden' name='id' value="<?php echo $familleDataArray[$i][0];?>" />
 								<button type="button" famillenum="<?php echo $familleDataArray[$i][0];?>" class="btn btn-danger buttonSupprimer" title="Supprimer"><i class="fa fa-times" aria-hidden="true"></i></button>
 							</form>
@@ -66,6 +70,9 @@
 			$( document ).ready(function() {
 				$(".buttonChoisir").on("click",function(){
 					$("#formChoisir"+$(this).attr("famillenum")).submit();
+				});
+				$(".buttonModifier").on("click",function(){
+					$("#formModifier"+$(this).attr("famillenum")).submit();
 				});
 				$(".buttonSupprimer").on("click",function(){
 					$("#formSupprimer"+$(this).attr("famillenum")).submit();

@@ -12,7 +12,7 @@ $currentannee = databaseQuery('SELECT usr_annee FROM users WHERE usr_name = \'ad
 <form method="post" action="./modifier/modifierAnnee.php" class="form-inline">
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="annee" name="annee" placeholder="" value="<?php echo($currentannee[0][0] ) ; ?>" />
 	
-		<input class="btn btn-danger" type="submit" value="Modifier" />
+		<input class="btn btn-primary" type="submit" value="Modifier" />
 </form>
 
 <h3>Tout remettre à zero </h3>

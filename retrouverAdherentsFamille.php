@@ -19,7 +19,12 @@
     <body>
 		<?php include("menu.php"); ?>
 		<?php include("Query.php");
-		$familleDataArray = databaseQuery('SELECT adh_id,adh_nom, adh_prenom, adh_age FROM adherent WHERE adh_fml=\'' . $_SESSION['fml_id'] .'\'');
+		if(isset($_POST["id"])){
+			$familleDataArray = databaseQuery('SELECT adh_id,adh_nom, adh_prenom, adh_age FROM adherent WHERE adh_fml=\'' . $_POST['id'] .'\'');
+		}
+		else{
+			$familleDataArray = databaseQuery('SELECT adh_id,adh_nom, adh_prenom, adh_age FROM adherent WHERE adh_fml=\'' . $_SESSION['fml_id'] .'\'');
+		}
 		?>
 
 		<div class="container">
@@ -38,7 +43,6 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">Numéro adhérent</th>
 								<th scope="col">Nom</th>
 								<th scope="col">Prénom</th>
 								<th scope="col">Date de naissance</th>
@@ -50,16 +54,15 @@
 						$_SESSION['nb_adh'] = count($familleDataArray);
 						for($i = 0, $size = count($familleDataArray); $i < $size; $i++) { ?>
 							<tr>
-								<td> <?php echo $familleDataArray[$i][0];?> </td>
 								<td> <?php echo $familleDataArray[$i][1];?> </td>
 								<td> <?php echo $familleDataArray[$i][2];?> </td>
 								<td> <?php echo $familleDataArray[$i][3];?> </td>
 								<td class="row">
-									<form method="post" class="col-4" action="./formulaireAdherentAuto.php" id="formModifier<?php echo $familleDataArray[$i][0];?>">
+									<form method="post" class="col-6" action="./formulaireAdherentAuto.php" id="formModifier<?php echo $familleDataArray[$i][0];?>">
 										<input type='hidden' name='id' value="<?php echo $familleDataArray[$i][0];?>" />
 										<button type="button" famillenum="<?php echo $familleDataArray[$i][0];?>" class="btn btn-primary buttonModifier" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 									</form>
-									<form method="post" class="col-4" action="./supprimer/supprimerAdherent.php" id="formSupprimer<?php echo $familleDataArray[$i][0];?>">
+									<form method="post" class="col-6" action="./supprimer/supprimerAdherent.php" id="formSupprimer<?php echo $familleDataArray[$i][0];?>">
 										<input type='hidden' name='id' value="<?php echo $familleDataArray[$i][0];?>" />
 										<button type="button" famillenum="<?php echo $familleDataArray[$i][0];?>" class="btn btn-danger buttonSupprimer" title="Supprimer"><i class="fa fa-times" aria-hidden="true"></i></button>
 									</form>

@@ -42,6 +42,7 @@ $sheet->setCellValue('I3', 'Atelier 2');
 $sheet->setCellValue('J3', 'Solfège');
 $sheet->setCellValue('K3', 'Classe');
 $sheet->setCellValue('L3', 'Date Naissance');
+$sheet->setCellValue('M3', 'Âge');
 $sheet->setCellValue('N3', 'Mail');
 $sheet->setCellValue('O3', 'Téléphone');
 $sheet->setCellValue('Q3', 'Adresse');
@@ -49,7 +50,13 @@ $sheet->setCellValue('R3', 'CP');
 $sheet->setCellValue('S3', 'Commune');
 $sheet->setCellValue('U3', 'Rentre seul');
 
+$dateActuelle = new DateTime();
+
 foreach($donnees as $num_ln => $adherent){
+	
+	// calcul de l'age a partir de la date de naissance
+	$age = $dateActuelle->diff(new DateTime($adherent[13]));
+
 	$sheet->setCellValue('A'.($num_ln+4), $num_ln+1);
 	$sheet->setCellValue('B'.($num_ln+4), $adherent[0]);	//adh_id
 	$sheet->setCellValue('C'.($num_ln+4), $adherent[1].' '.$adherent[2]);	//adh_prenom adh_nom
@@ -62,6 +69,7 @@ foreach($donnees as $num_ln => $adherent){
 	$sheet->setCellValue('J'.($num_ln+4), $adherent[11]);	//fmt_nom
 	$sheet->setCellValue('K'.($num_ln+4), $adherent[12]);	//adh_classe
 	$sheet->setCellValue('L'.($num_ln+4), $adherent[13]);	//adh_age
+	$sheet->setCellValue('M'.($num_ln+4), $age->y);	//age calculé
 	$sheet->setCellValue('N'.($num_ln+4), $adherent[14]);	//fml_mail
 	$sheet->setCellValue('O'.($num_ln+4), $adherent[15]);	//fml_phone
 	$sheet->setCellValue('Q'.($num_ln+4), $adherent[16]);	//fml_address

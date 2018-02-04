@@ -30,7 +30,8 @@
 		<?php
 			include("menu.php");
 			
-			$currentArray = databaseQuery("SELECT fml_id, fml_name, fml_mail, fml_phone, fml_address, fml_commune, fml_zip FROM famille WHERE fml_id='" . $_POST['id'] . "'");
+			$currentArray = databaseQuery("SELECT fml_id,fml_name, fml_mail, fml_phone, fml_address, cmn_nom, cmn_zip FROM famille INNER JOIN commune ON cmn_id = fml_commune WHERE fml_id='" . $_POST['id'] . "'");
+
 		?>
 		<div class="container">
 			<h2>Formulaire</h2>
@@ -86,14 +87,6 @@
 					<label class="control-label col-3">Commune :</label>
 					<div class="col-9">
 						<select name="cmn_id" id="cmn_id" class="select form-control">
-
-						<?php
-							for($i = 0, $size = count($communeArray); $i < $size; $i++) {
-						?>
-								<option value="<?php echo $communeArray[$i][0]?>" <?php if($currentArray[0][5]==$communeArray[$i][0]){echo "selected";}?>><?php echo $communeArray[$i][1] ?></option>
-						<?php
-							}
-						?>
 						</select>
 					</div>
 				</div>
@@ -104,3 +97,31 @@
 		</div>
 	</body>
 </html>
+
+<script>
+$("document").ready(function(){
+  $('#code_postal').change(function(){
+    var params = {
+      action: "getZip",
+      zip: $(this).val()
+    };
+    if($(this).val() != ""){
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "AfficherListe.php",
+        data: params,
+        success: function(data) {
+          var option = '';
+          for (var i=0;i<data.length;i++){
+            option += '<option value="'+ data[i][0] + '">' + data[i][1] + '</option>';
+          }
+          $('#cmn_id').html(option);
+        }
+      });
+    } else{
+      $('#cmn_id').html("<option value=''></option>");
+    }
+  }).trigger( "change" );
+});
+</script>
