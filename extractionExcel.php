@@ -26,6 +26,82 @@ $donnees = databaseQuery($sql);
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
+$spreadsheet->getActiveSheet()->mergeCells('A1:S1');
+
+$titleStyleArray = array(
+    'font' => array(
+        'bold' => true,
+		'size' => 26,
+    ),
+    'alignment' => array(
+        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+    ),
+    'borders' => array(
+        'top' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        ),
+        'left' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        ),
+        'right' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        ),
+    ),
+);
+
+$spreadsheet->getActiveSheet()->getStyle('A1:S1')->applyFromArray($titleStyleArray);
+
+$spreadsheet->getActiveSheet()->mergeCells('A2:S2');
+
+$subtitleStyleArray = array(
+    'font' => array(
+		'size' => 18,
+    ),
+    'alignment' => array(
+        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+    ),
+    'borders' => array(
+        'bottom' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        ),
+        'left' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        ),
+        'right' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        ),
+    ),
+);
+
+$spreadsheet->getActiveSheet()->getStyle('A2:S2')->applyFromArray($subtitleStyleArray);
+
+$headerStyleArray = array(
+    'font' => array(
+        'bold' => true,
+    ),
+    'alignment' => array(
+        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+    ),
+    'borders' => array(
+        'allBorders' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+        ),
+    ),
+);
+
+$spreadsheet->getActiveSheet()->getStyle('B3:S3')->applyFromArray($headerStyleArray);
+
+
+$bodyStyleArray = array(
+    'borders' => array(
+        'allBorders' => array(
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+        ),
+    ),
+);
+
+
+
 // Titre et total d'adhérents
 $sheet->setCellValue('A1', 'Adhérents '.$annee[0][0]);
 $sheet->setCellValue('A2', $nb_adh[0][0].' adhérents');
@@ -45,10 +121,10 @@ $sheet->setCellValue('L3', 'Date Naissance');
 $sheet->setCellValue('M3', 'Âge');
 $sheet->setCellValue('N3', 'Mail');
 $sheet->setCellValue('O3', 'Téléphone');
-$sheet->setCellValue('Q3', 'Adresse');
-$sheet->setCellValue('R3', 'CP');
-$sheet->setCellValue('S3', 'Commune');
-$sheet->setCellValue('U3', 'Rentre seul');
+$sheet->setCellValue('P3', 'Adresse');
+$sheet->setCellValue('Q3', 'CP');
+$sheet->setCellValue('R3', 'Commune');
+$sheet->setCellValue('S3', 'Rentre seul');
 
 $dateActuelle = new DateTime();
 
@@ -72,11 +148,36 @@ foreach($donnees as $num_ln => $adherent){
 	$sheet->setCellValue('M'.($num_ln+4), $age->y);	//age calculé
 	$sheet->setCellValue('N'.($num_ln+4), $adherent[14]);	//fml_mail
 	$sheet->setCellValue('O'.($num_ln+4), $adherent[15]);	//fml_phone
-	$sheet->setCellValue('Q'.($num_ln+4), $adherent[16]);	//fml_address
-	$sheet->setCellValue('R'.($num_ln+4), $adherent[17]);	//cmn_zip
-	$sheet->setCellValue('S'.($num_ln+4), $adherent[18]);	//cmn_nom
-	$sheet->setCellValue('U'.($num_ln+4), $adherent[19]);	//adh_seul
+	$sheet->setCellValue('P'.($num_ln+4), $adherent[16]);	//fml_address
+	$sheet->setCellValue('Q'.($num_ln+4), $adherent[17]);	//cmn_zip
+	$sheet->setCellValue('R'.($num_ln+4), $adherent[18]);	//cmn_nom
+	$sheet->setCellValue('S'.($num_ln+4), $adherent[19]);	//adh_seul
+	
+	
+	
+	$spreadsheet->getActiveSheet()->getStyle('B'.($num_ln+4).':S'.($num_ln+4))->applyFromArray($bodyStyleArray);
+
 }
+
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('M')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('N')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('O')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('P')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('Q')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('R')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('S')->setAutoSize(true);
 
 // redirect output to client browser
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

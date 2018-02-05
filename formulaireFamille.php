@@ -13,9 +13,16 @@
         <meta charset="utf-8" />
 
     </head>
-	<?php include("menu.php"); ?>
+	
     <body>
- 
+	<?php include("menu.php"); ?>
+	
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb" style="margin-bottom: 0;">
+			<li class="breadcrumb-item active" aria-current="page">Accueil</li>
+		</ol>
+	</nav>
+	
 	<div class="jumbotron">
 <div id="RetrouverFamille"  >
 	<h2 style="text-align: center;">Retrouver une famille déjà existante</h2>

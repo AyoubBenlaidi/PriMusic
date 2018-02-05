@@ -84,14 +84,20 @@
 
 </head>
 
-<?php include("menu.php"); ?>
 
 <body>
 
 
-   <h1 style="text-align: center;"
-
- >Recapitulatif</h1>
+	<?php include("menu.php"); ?>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item active"><a href="formulaireFamille.php">Accueil</a></li>
+			<li class="breadcrumb-item active"><a href="formulaireFamilleAuto.php">Famille</a></li>
+			<li class="breadcrumb-item active"><a href="retrouverAdherentsFamille.php">Adhérent</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Paiement</li>
+		</ol>
+	</nav>
+   <h1 style="text-align: center;">Recapitulatif</h1>
 
 <div class="recap" style="width:70% ; display: block;
     margin-left: auto;

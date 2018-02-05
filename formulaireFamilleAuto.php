@@ -29,9 +29,18 @@
 		<?php
 			include("menu.php");
 			
-			$currentArray = databaseQuery("SELECT fml_id,fml_name, fml_mail, fml_phone, fml_address, cmn_nom, cmn_zip FROM famille INNER JOIN commune ON cmn_id = fml_commune WHERE fml_id='" . $_POST['id'] . "'");
+			if(isset($_POST["id"])){
+				$_SESSION['fml_id'] = $_POST["id"];
+			}
+			$currentArray = databaseQuery("SELECT fml_id,fml_name, fml_mail, fml_phone, fml_address, cmn_nom, cmn_zip FROM famille INNER JOIN commune ON cmn_id = fml_commune WHERE fml_id='".$_SESSION['fml_id']."'");
 
 		?>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" style="margin-bottom: 0;">
+				<li class="breadcrumb-item active"><a href="formulaireFamille.php">Accueil</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Modification</li>
+			</ol>
+		</nav>
 		<div class="container">
 			<h2>Formulaire</h2>
 			<form method="post" action="./modifier/modifierFamille.php">

@@ -24,6 +24,14 @@
 		$familleDataArray = databaseQuery('SELECT adh_id,adh_nom, adh_prenom, adh_age FROM adherent WHERE adh_fml=\'' . $_SESSION['fml_id'] .'\'');
 		?>
 
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" style="margin-bottom: 0;">
+				<li class="breadcrumb-item active"><a href="formulaireFamille.php">Accueil</a></li>
+				<li class="breadcrumb-item active"><a href="formulaireFamilleAuto.php">Famille</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Adhérent</li>
+			</ol>
+		</nav>
+		
 		<div class="container">
 			<div id="corps">
 				<h2>Liste des adhérents de cette famille</h2>

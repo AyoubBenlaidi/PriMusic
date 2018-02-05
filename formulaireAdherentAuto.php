@@ -19,6 +19,14 @@
 		include("menu.php");
 		$currentArray = databaseQuery("SELECT adh_id,adh_fml, adh_nom, adh_prenom, adh_age, adh_instr1, adh_prof1, adh_instr2, adh_prof2, adh_atelier1, adh_atelier2, adh_formation, adh_classe, adh_seul, adh_sexe FROM adherent WHERE adh_id='" . $_POST['id'] . "'");
 		?>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" style="margin-bottom: 0;">
+				<li class="breadcrumb-item active"><a href="formulaireFamille.php">Accueil</a></li>
+				<li class="breadcrumb-item active"><a href="formulaireFamilleAuto.php">Famille</a></li>
+				<li class="breadcrumb-item active"><a href="retrouverAdherentsFamille.php">Adhérent</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Modification</li>
+			</ol>
+		</nav>
 		<div class="container">
 			<h2>Modifier un adhérent</h2>
 			<form method="post" action="./modifier/modifierAdherent.php">

@@ -18,7 +18,14 @@
     <body>
 
 	<?php include("menu.php"); ?>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb" style="margin-bottom: 0;">
+			<li class="breadcrumb-item active"><a href="formulaireFamille.php">Accueil</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Recherche</li>
+		</ol>
+	</nav>
 	<?php include("Query.php");
+	
 	$familleDataArray = databaseQuery("SELECT fml_id,fml_name, fml_mail, fml_phone, fml_address, cmn_nom, cmn_zip FROM famille INNER JOIN commune ON cmn_id = fml_commune WHERE fml_name LIKE '%".$_POST['nom']."%'");
 
 	?>
