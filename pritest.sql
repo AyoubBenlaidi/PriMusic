@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 04 fév. 2018 à 21:02
+-- Généré le :  lun. 05 fév. 2018 à 20:27
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `adherent` (
   `adh_sexe` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`adh_id`),
   KEY `adh_fml` (`adh_fml`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `famille` (
   `fml_annee` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`fml_id`),
   KEY `fml_commune` (`fml_commune`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -218,23 +218,23 @@ INSERT INTO `instrument` (`instr_id`, `instr_nom`) VALUES
 DROP TABLE IF EXISTS `paiement`;
 CREATE TABLE IF NOT EXISTS `paiement` (
   `pay_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pay_adh` int(11) NOT NULL,
-  `pay_septembre` int(11) NOT NULL,
-  `pay_octobre` int(11) NOT NULL,
-  `pay_novembre` int(11) NOT NULL,
-  `pay_decembre` int(11) NOT NULL,
-  `pay_janvier` int(11) NOT NULL,
-  `pay_fevrier` int(11) NOT NULL,
-  `pay_mars` int(11) NOT NULL,
-  `pay_avril` int(11) NOT NULL,
-  `pay_mai` int(11) NOT NULL,
-  `pay_juin` int(11) NOT NULL,
-  `pay_total` int(11) NOT NULL,
-  `pay_cv` int(11) NOT NULL,
-  `pay_liquide` int(11) NOT NULL,
+  `pay_fml` int(11) NOT NULL,
+  `pay_septembre` float NOT NULL,
+  `pay_octobre` float NOT NULL,
+  `pay_novembre` float NOT NULL,
+  `pay_decembre` float NOT NULL,
+  `pay_janvier` float NOT NULL,
+  `pay_fevrier` float NOT NULL,
+  `pay_mars` float NOT NULL,
+  `pay_avril` float NOT NULL,
+  `pay_mai` float NOT NULL,
+  `pay_juin` float NOT NULL,
+  `pay_total` float NOT NULL,
+  `pay_cv` float NOT NULL,
+  `pay_liquide` float NOT NULL,
   PRIMARY KEY (`pay_id`),
-  KEY `pay_adh` (`pay_adh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `pay_adh` (`pay_fml`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -318,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`usr_id`, `usr_name`, `usr_password`, `usr_type`, `usr_annee`) VALUES
 (1, 'admin', 'admin', 'admin', '2017-2018'),
-(2, 'membre', 'membre', 'membre', '2017-2018');
+(2, 'gestion', 'gestion', 'membre', '2017-2018');
 
 --
 -- Contraintes pour les tables déchargées
@@ -340,7 +340,7 @@ ALTER TABLE `famille`
 -- Contraintes pour la table `paiement`
 --
 ALTER TABLE `paiement`
-  ADD CONSTRAINT `paiement_ibfk_1` FOREIGN KEY (`pay_adh`) REFERENCES `adherent` (`adh_id`);
+  ADD CONSTRAINT `paiement_ibfk_1` FOREIGN KEY (`pay_fml`) REFERENCES `famille` (`fml_id`);
 
 --
 -- Contraintes pour la table `professeur`

@@ -7,10 +7,11 @@
 
 if( $enteredpassword == $password[0][0] ) {
 
-	$req = $bdd->query("DELETE FROM adherent ; ");
-    $req2 = $bdd->query("DELETE FROM famille ;");
+	$req1 = $bdd->query("DELETE FROM paiement ; ");
+	$req2 = $bdd->query("DELETE FROM adherent ; ");
+    $req3 = $bdd->query("DELETE FROM famille ;");
     
-	if($req && $req2 ){
+	if($req1 && $req2 && $req3 ){
 		echo "Tout a été supprimé";
 		header("refresh:1;url=../administration.php");
 	}else{

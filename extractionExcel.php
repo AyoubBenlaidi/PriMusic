@@ -9,7 +9,9 @@ $annee = databaseQuery('SELECT usr_annee FROM users WHERE usr_name = \'admin\'')
 $nb_adh = databaseQuery('SELECT count(adh_id) as nb_adh FROM famille fml join adherent adh on adh.adh_fml = fml.fml_id WHERE fml_annee=\'' . $annee[0][0] .'\'');
 
 $sql = "SELECT adh_id,adh_prenom,adh_nom,i.instr_nom,p.prof_prenom,p.prof_nom,ii.instr_nom,pp.prof_prenom,pp.prof_nom,
-		a.atl_nom,aa.atl_nom,fmt_nom,adh_classe,adh_age,fml_mail,fml_phone,fml_address,cmn_zip,cmn_nom,adh_seul
+		a.atl_nom,aa.atl_nom,fmt_nom,adh_classe,adh_age,fml_mail,fml_phone,fml_address,cmn_zip,cmn_nom,adh_seul,
+		pay_septembre,pay_octobre,pay_novembre,pay_decembre,pay_janvier,pay_fevrier,pay_mars,pay_avril,pay_mai,
+		pay_juin,pay_total,pay_cv,pay_liquide
 		FROM adherent
 		INNER JOIN famille ON adh_fml = fml_id
 		LEFT OUTER JOIN instrument i ON i.instr_id = adh_instr1

@@ -40,6 +40,17 @@
 			
 			$request=$bdd->prepare($insertString);
 			$reponse=$request->execute($insertParam);
+			echo 'tse:'.$reponse;
+			
+			if($reponse === true){
+				echo "true";
+			}
+			elseif($reponse === false){
+				echo "false";
+			}
+			else{
+				echo "merde";
+			}
 			
 			return $reponse;		
 		}
