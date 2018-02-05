@@ -21,5 +21,5 @@ include('Query.php');
 	</select><br>
 	<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="valeur" name="valeur" placeholder="Nouvelle valeur"/>
 	
-	<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Modifier" />
+	<input class="btn btn-primary" type="submit" value="Modifier" />
 </form>

@@ -9,6 +9,15 @@ class PDF extends FPDF
   // Better table
   function familyTable($headerFamille, $dataFamille, $headerAdh, $dataAdh, $headerFml, $dataFml, $paiementArray)
   {
+	$pcv = 0;
+	$pl = 0;
+	if(isset($_POST["cheque"]) and $_POST["cheque"] != ""){
+		$pcv = $_POST["cheque"];
+	}
+	if(isset($_POST["liquide"]) and $_POST["liquide"] != ""){
+		$pl = $_POST["liquide"];
+	}
+	  
     $this->SetFont('Arial','BU',15);
     // Move to the right
     $this->Cell(130);
@@ -169,7 +178,7 @@ class PDF extends FPDF
 
 
 
-    $totPay = $paiementArray[0] + $paiementArray[2] + $paiementArray[4] - $paiementArray[1] - $paiementArray[3] - $_POST['cheque'] - $_POST['liquide'] ;
+    $totPay = $paiementArray[0] + $paiementArray[2] + $paiementArray[4] - $paiementArray[1] - $paiementArray[3] - $pcv - $pl ;
     $decimal = $totPay - intval($totPay);
    
     $this->SetY(135 ) ;
@@ -187,8 +196,8 @@ class PDF extends FPDF
       $this->Cell(22, 6, variant_int($totPay / count($_POST['check_list'])) . ' ' . EURO,1,0,'C');
     }
     $this->Cell(22,6, ($totPay % count($_POST['check_list']))+variant_int($totPay / count($_POST['check_list']))+$decimal .' '. EURO, 1, 0, 'C');
-    $this->Cell(30, 6, $_POST['cheque'].' '.EURO, 1, 0, 'C');
-    $this->Cell(30, 6, $_POST['liquide'].' '. EURO, 1, 0, 'C');
+    $this->Cell(30, 6, $pcv.' '.EURO, 1, 0, 'C');
+    $this->Cell(30, 6, $pl.' '. EURO, 1, 0, 'C');
 
     $this->Ln(10);
     $this->SetFont('Arial','',10 );
@@ -201,7 +210,7 @@ class PDF extends FPDF
                     O autorise Mr ou Mme à prendre en charge mon enfant à la sortie des cours.
                     O autorise mon enfant à rentrer seul
                     O déclare venir chercher mon enfant à la sortie des cours
-                    O autorise l'eventuelle publication dans les journéux locaux de photos de mon enfant prises lors des manifestations musicales
+                    O autorise l'eventuelle publication dans les journaux locaux de photos de mon enfant prises lors des manifestations musicales
     
     J'ai pris connaissance du règlement intérieur et l'accepte.
     Le                                     à :                                                                       lu et approuvé                         signature :" ;

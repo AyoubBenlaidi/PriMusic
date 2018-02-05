@@ -11,7 +11,7 @@ $nb_adh = databaseQuery('SELECT count(adh_id) as nb_adh FROM famille fml join ad
 $sql = "SELECT adh_id,adh_prenom,adh_nom,i.instr_nom,p.prof_prenom,p.prof_nom,ii.instr_nom,pp.prof_prenom,pp.prof_nom,
 		a.atl_nom,aa.atl_nom,fmt_nom,adh_classe,adh_age,fml_mail,fml_phone,fml_address,cmn_zip,cmn_nom,adh_seul,
 		pay_septembre,pay_octobre,pay_novembre,pay_decembre,pay_janvier,pay_fevrier,pay_mars,pay_avril,pay_mai,
-		pay_juin,pay_total,pay_cv,pay_liquide
+		pay_juin,pay_cv,pay_liquide,pay_total
 		FROM adherent
 		INNER JOIN famille ON adh_fml = fml_id
 		LEFT OUTER JOIN instrument i ON i.instr_id = adh_instr1
@@ -22,6 +22,7 @@ $sql = "SELECT adh_id,adh_prenom,adh_nom,i.instr_nom,p.prof_prenom,p.prof_nom,ii
 		LEFT OUTER JOIN atelier aa ON aa.atl_id = adh_atelier2
 		LEFT OUTER JOIN formation ON fmt_id = adh_formation
 		INNER JOIN commune ON cmn_id = fml_commune
+		LEFT OUTER JOIN paiement ON fml_id = pay_fml
 		WHERE fml_annee = '".$annee[0][0]."'";
 $donnees = databaseQuery($sql);
 
@@ -51,7 +52,7 @@ $titleStyleArray = array(
     ),
 );
 
-$spreadsheet->getActiveSheet()->getStyle('A1:S1')->applyFromArray($titleStyleArray);
+$spreadsheet->getActiveSheet()->getStyle('A1:AF1')->applyFromArray($titleStyleArray);
 
 $spreadsheet->getActiveSheet()->mergeCells('A2:S2');
 
@@ -75,7 +76,7 @@ $subtitleStyleArray = array(
     ),
 );
 
-$spreadsheet->getActiveSheet()->getStyle('A2:S2')->applyFromArray($subtitleStyleArray);
+$spreadsheet->getActiveSheet()->getStyle('A2:AF2')->applyFromArray($subtitleStyleArray);
 
 $headerStyleArray = array(
     'font' => array(
@@ -91,7 +92,7 @@ $headerStyleArray = array(
     ),
 );
 
-$spreadsheet->getActiveSheet()->getStyle('B3:S3')->applyFromArray($headerStyleArray);
+$spreadsheet->getActiveSheet()->getStyle('B3:AF3')->applyFromArray($headerStyleArray);
 
 
 $bodyStyleArray = array(
@@ -101,8 +102,6 @@ $bodyStyleArray = array(
         ),
     ),
 );
-
-
 
 // Titre et total d'adhérents
 $sheet->setCellValue('A1', 'Adhérents '.$annee[0][0]);
@@ -127,6 +126,19 @@ $sheet->setCellValue('P3', 'Adresse');
 $sheet->setCellValue('Q3', 'CP');
 $sheet->setCellValue('R3', 'Commune');
 $sheet->setCellValue('S3', 'Rentre seul');
+$sheet->setCellValue('T3', 'Septembre');
+$sheet->setCellValue('U3', 'Octobre');
+$sheet->setCellValue('V3', 'Novembre');
+$sheet->setCellValue('W3', 'Décembre');
+$sheet->setCellValue('X3', 'Janvier');
+$sheet->setCellValue('Y3', 'Février');
+$sheet->setCellValue('Z3', 'Mars');
+$sheet->setCellValue('AA3', 'Avril');
+$sheet->setCellValue('AB3', 'Mai');
+$sheet->setCellValue('AC3', 'Juin');
+$sheet->setCellValue('AD3', 'CV');
+$sheet->setCellValue('AE3', 'Liquide');
+$sheet->setCellValue('AF3', 'Total');
 
 $dateActuelle = new DateTime();
 
@@ -154,10 +166,23 @@ foreach($donnees as $num_ln => $adherent){
 	$sheet->setCellValue('Q'.($num_ln+4), $adherent[17]);	//cmn_zip
 	$sheet->setCellValue('R'.($num_ln+4), $adherent[18]);	//cmn_nom
 	$sheet->setCellValue('S'.($num_ln+4), $adherent[19]);	//adh_seul
+	$sheet->setCellValue('T'.($num_ln+4), $adherent[20]);	//pay_septembre
+	$sheet->setCellValue('U'.($num_ln+4), $adherent[21]);	//pay_octobre
+	$sheet->setCellValue('V'.($num_ln+4), $adherent[22]);	//pay_novembre
+	$sheet->setCellValue('W'.($num_ln+4), $adherent[23]);	//pay_decembre
+	$sheet->setCellValue('X'.($num_ln+4), $adherent[24]);	//pay_janvier
+	$sheet->setCellValue('Y'.($num_ln+4), $adherent[25]);	//pay_fevrier
+	$sheet->setCellValue('Z'.($num_ln+4), $adherent[26]);	//pay_mars
+	$sheet->setCellValue('AA'.($num_ln+4), $adherent[27]);	//pay_avril
+	$sheet->setCellValue('AB'.($num_ln+4), $adherent[28]);	//pay_mai
+	$sheet->setCellValue('AC'.($num_ln+4), $adherent[29]);	//pay_juin
+	$sheet->setCellValue('AD'.($num_ln+4), $adherent[30]);	//pay_cv
+	$sheet->setCellValue('AE'.($num_ln+4), $adherent[31]);	//pay_liquide
+	$sheet->setCellValue('AF'.($num_ln+4), $adherent[32]);	//pay_total
 	
 	
 	
-	$spreadsheet->getActiveSheet()->getStyle('B'.($num_ln+4).':S'.($num_ln+4))->applyFromArray($bodyStyleArray);
+	$spreadsheet->getActiveSheet()->getStyle('B'.($num_ln+4).':AF'.($num_ln+4))->applyFromArray($bodyStyleArray);
 
 }
 
@@ -180,6 +205,19 @@ $spreadsheet->getActiveSheet()->getColumnDimension('P')->setAutoSize(true);
 $spreadsheet->getActiveSheet()->getColumnDimension('Q')->setAutoSize(true);
 $spreadsheet->getActiveSheet()->getColumnDimension('R')->setAutoSize(true);
 $spreadsheet->getActiveSheet()->getColumnDimension('S')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('T')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('U')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('V')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('W')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('X')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('Y')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('Z')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('AA')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('AB')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('AC')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('AD')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('AE')->setAutoSize(true);
+$spreadsheet->getActiveSheet()->getColumnDimension('AF')->setAutoSize(true);
 
 // redirect output to client browser
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

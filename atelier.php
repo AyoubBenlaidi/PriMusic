@@ -9,7 +9,7 @@ $atelierArray = databaseQuery("SELECT atl_id, atl_nom FROM atelier");
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="nom" name="nom" placeholder="Atelier"/>
 
 
-		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />
+		<input class="btn btn-success" type="submit" value="Ajouter" />
 </form>
 
 <h3>Supprimer un atelier </h3>
@@ -26,5 +26,5 @@ $atelierArray = databaseQuery("SELECT atl_id, atl_nom FROM atelier");
 				}
 			?>
 		</select>
-		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
+		<input class="btn btn-danger" type="submit" value="Supprimer"/>
 </form>

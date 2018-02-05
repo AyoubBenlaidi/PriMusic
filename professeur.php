@@ -34,7 +34,7 @@ include("Query.php");
 			?>
 	</select>
 
-	<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter"/>
+	<input class="btn btn-success" type="submit" value="Ajouter"/>
 
 </form>
 
@@ -51,5 +51,5 @@ include("Query.php");
 	}
 	?>
  </select>
-<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
+<input class="btn btn-danger" type="submit" value="Supprimer"/>
 		</form>

@@ -12,7 +12,23 @@
     <script defer src="./ressources/MDL/material.min.js"></script>
 
     <script>
+		function calculerTotal(){
+			var donnees = $("#formPaiement > form").serialize();
+			$.ajax({
+            url: "./calculerTotal.php",
+			data: donnees,
+			method: "POST",
+            success: function(result){
+                $("#ajaxTotal").html(result);
+            }
+        });
+		}
+	
         $("document").ready(function () {
+			calculerTotal();
+			
+			$(".formuleInput").on("change",calculerTotal);
+			
             $('#checkAll').click(function (event) {
                 var state = this.checked;
                 $("input[name='check_list[]']").each(function () {
@@ -21,7 +37,14 @@
             });
 
             $("form").on("submit",function(){
-                $("body div.container").append('<a href="./formulaireFamille.php" class="btn btn-success btn-lg btn-block">Retour</a>');
+				checked = $("div.calendar input[type=checkbox]:checked").length;
+
+				if(!checked) {
+					alert("Merci de sélectionner au moins un mois.");
+					return false;
+				}
+				
+                $("div#bouton_retour").html('<a href="./formulaireFamille.php" class="btn btn-success btn-lg btn-block">Retour</a>');
             });
         });
     </script>
@@ -99,13 +122,13 @@
 <body>
 <?php include("menu.php"); ?>
 <nav aria-label="breadcrumb">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="formulaireFamille.php">Accueil</a></li>
-			<li class="breadcrumb-item active"><a href="formulaireFamilleAuto.php">Famille</a></li>
-			<li class="breadcrumb-item active"><a href="retrouverAdherentsFamille.php">Adhérent</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Paiement</li>
-		</ol>
-	</nav>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item active"><a href="formulaireFamille.php">Accueil</a></li>
+		<li class="breadcrumb-item active"><a href="formulaireFamilleAuto.php">Famille</a></li>
+		<li class="breadcrumb-item active"><a href="retrouverAdherentsFamille.php">Adhérent</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Paiement</li>
+	</ol>
+</nav>
 <h1 style="text-align: center;">Recapitulatif</h1>
     <div class="recap" style="width:70% ; display: block;
         margin-left: auto;
@@ -263,7 +286,7 @@
                                 <tr>
                                     <td> <?php echo($formuleArray[$i][1]); ?></td>
                                     <td>
-                                        <input type="number" value="<?php echo($tabRecap[$i]) ?>" name="<?php echo $formuleArray[$i][2] ?>"/></td>
+                                        <input type="number" class="formuleInput" value="<?php echo($tabRecap[$i]) ?>" name="<?php echo $formuleArray[$i][2] ?>"/></td>
                                     <?php } ?>
                                 </tr>
                                 </tbody>
@@ -272,7 +295,9 @@
 
 
 
-                        <br/><br/><br/>
+                        <br/>
+						<div id="ajaxTotal"></div>
+						<br/><br/>
 
                         <div class="form-group">
                             <div class="input-group">
@@ -293,7 +318,6 @@
                             <h3 class="col-10"><input class="col-2" style="width:30px;height:30px;" type="checkbox"
                                                       id="checkAll" name="checkAll" value="checkAll"> Tout cocher</h3>
                         </div>
-
 
                         <br/>
                         <div class="calendar">
@@ -328,14 +352,17 @@
 
 
                         <br/>
+						<div id="bouton_retour" class="form-group"></div>
                         <br/>
                         <div class="form-group">
                             <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Valider
                             </button>
                         </div>
                     </div>
-    </form>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
-<br/> <br/>
 </body>
 </html>

@@ -16,7 +16,7 @@ include('Query.php');
 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="zip" name="zip" placeholder="Code postal"/>
 			
 		
-		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Ajouter" />
+		<input class="btn btn-success" type="submit" value="Ajouter" />
 </form>
 
 <h3>Supprimer une commune</h3>
@@ -33,5 +33,5 @@ include('Query.php');
 				}
 			?>
 		</select>
-		<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Supprimer"/>
+		<input class="btn btn-danger" type="submit" value="Supprimer"/>
 </form>
