@@ -19,11 +19,9 @@
 		<?php include("menu.php"); ?>
 		<?php include("Query.php");
 		if(isset($_POST["id"])){
-			$familleDataArray = databaseQuery('SELECT adh_id,adh_nom, adh_prenom, adh_age FROM adherent WHERE adh_fml=\'' . $_POST['id'] .'\'');
+			$_SESSION['fml_id'] = $_POST["id"];
 		}
-		else{
-			$familleDataArray = databaseQuery('SELECT adh_id,adh_nom, adh_prenom, adh_age FROM adherent WHERE adh_fml=\'' . $_SESSION['fml_id'] .'\'');
-		}
+		$familleDataArray = databaseQuery('SELECT adh_id,adh_nom, adh_prenom, adh_age FROM adherent WHERE adh_fml=\'' . $_SESSION['fml_id'] .'\'');
 		?>
 
 		<div class="container">
